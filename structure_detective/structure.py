@@ -19,7 +19,6 @@ class Structure:
     doc._.structure = fn(doc, self.nlp) 
     return doc
 
-
 def trs(doc, structure: dict, lang: str):
   pkg = 'structure_detective.{}.trans_structure'.format(lang)
   pkg_module = import_module(pkg)    

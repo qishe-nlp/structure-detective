@@ -14,7 +14,7 @@ def create_structure(nlp: Language, name: str):
 def print_structure(doc, lang):
   content = doc._.structure
   print(content)
-  print(lang)
+  #print(lang)
   analysis = trs(doc, content, lang)
   print(analysis)
   #for c in content:
@@ -37,7 +37,7 @@ def display_structure(sentences, nlp):
     print("*"*10)
     print(s)
     print_structure(doc, nlp.meta["lang"])
-    #print_doc(doc)
+    print_doc(doc)
     print("*"*10)
     graph(doc, nlp.meta["lang"])
 
