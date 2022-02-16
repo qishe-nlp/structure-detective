@@ -3,8 +3,8 @@ from structure_detective import PKG_INDICES
 from tests.lib import *
 import json
 from importlib import import_module
-
-lang = "de"
+from tests.en_sens import *
+lang = "en"
 pkg = PKG_INDICES[lang]
 
 def _add_bracket(ex):
@@ -76,11 +76,14 @@ _cross_sentences = [
 ]
 
 
-_sentences = _zu_sentences + _oc_sentences
+#_sentences = _zu_sentences + _oc_sentences
 #_sentences = _cross_sentences
 
-filename = "de_S01E03.json"
-_sentences = read_from_json(filename)
+#filename = "de_S01E05.json"
+#_sentences = read_from_json(filename)
+
+
+_sentences = half_be_going_to_sentences 
 
 def test_structure_tbr():
   nlp = spacy.load(pkg)

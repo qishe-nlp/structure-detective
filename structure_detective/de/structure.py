@@ -10,9 +10,12 @@ def _has_no_subject(e):
   return all([subj not in children_deps for subj in ["sb", "sbp", "pm"]])
 
 def _get_root(doc: Doc):
+  print(doc.text)
   roots = [r for r in doc if r.dep_=="ROOT"]
-  assert(len(roots)>=1)
-  root = roots[0]
+  if len(roots)>=1:
+    root = roots[0]
+  else:
+    root = None
   return root
 
 def _handle_backward_ocs(ocs:list, doc:Doc):
@@ -59,7 +62,7 @@ def _handle_oc(doc: Doc, nlp: Language):
 
   oc = ocs[0]
   
-  no_need_to_dig = not _is_verb_like(oc) or "sb" in [t.dep_ for t in oc.children]
+  no_need_to_dig = not _is_verb_like(oc) or "sb" in [t.dep_ for t in oc.children] or "ep" in [t.dep_ for t in oc.children]
   if no_need_to_dig:
     # oc IS NOT verb like
     store.extend(form_children_info(doc, [oc]))
@@ -95,6 +98,8 @@ def _handle_oc(doc: Doc, nlp: Language):
 
 def get_tree(doc: Doc, nlp: Language):
   root = _get_root(doc)
+  if root == None:
+    return []
 
   if _is_verb_like(root):
     xs = ["oc"]

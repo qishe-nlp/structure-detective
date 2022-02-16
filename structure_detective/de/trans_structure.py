@@ -8,31 +8,38 @@ _de2c = {
   "da": "第三格补足语",
   "pd": "表语补足语",
   "ng": "否定词",
-  "ju": "连词",
   "op": "介词补足语",
   "cvc": "介词短语",
   "og": "第二格补足语",
   "cj": "并列句",
-  "vo": "称呼",
   "ph": "形式主语",
   "rc": "关系从句",
+  "rs": "其他",
+  "vo": "其他",
   "cc": "其他",
-  "cp": "其他",
   "app": "其他",
-  "rs": "称呼",
   "dep": "其他",
+  "dm": "其他",
+  "par": "其他",
+  "sbp": "其他",
+  "mnr": "其他",
 }
 
 trans_tag = {
-  "VAFIN": "助动词",
-  "VAINF": "动词不定式",
-  "VAPP": "过去分词",
-  "VVFIN": "限定动词",
-  "VVIMP": "动词命令式",
-  "VVPP": "过去分词",
-  "VVIZU": "带zu不定式",
-  "VVINF": "动词不定式",
-  "VMINF": "情态动词",
+  "VAFIN": "限定-助动词",
+  "VAINF": "不定式-助动词",
+  "VAIMP": "命令式-助动词",
+  "VAPP": "过去分词-助动词",
+
+  "VVFIN": "限定-动词",
+  "VVINF": "不定式-动词",
+  "VVIMP": "命令式-动词",
+  "VVPP": "过去分词-动词",
+  "VVIZU": "带zu不定式-动词",
+
+  "VMFIN": "限定-情态动词",
+  "VMINF": "不定式-情态动词",
+  "VMPP": "过去分词-情态动词"
 }
 
 adp_verbs = {
@@ -94,14 +101,16 @@ def _get_root_explanation(doc, r, structure):
   explanation = None
   if ele.pos_ not in ["VERB", "AUX", "NOUN"]:
     explanation = None
-  elif ele.tag_ in ["VMFIN", "VMINF", "VMPP"]:
+  elif ele.pos_ == "AUX" and ele.tag_ in ["VMINF", "VMFIN", "VMPP"]:
     explanation = "情态动词"
   elif ele.lemma_ in aux_verbs and any([d in ["oc"] for d in deps]):
     explanation = "助动词"
   elif ele.lemma_ in cop_verbs:
     explanation = "系动词"
-  elif ele.tag_ in trans_tag.keys():
-    explanation = trans_tag[ele.tag_]#"限定动词"
+  elif ele.pos_ == "VERB": 
+    explanation = "限定动词"
+  elif ele.pos_ == "AUX":
+    explanation = "助动词"
   else:
     explanation = ele.tag_
   return explanation
@@ -114,7 +123,7 @@ def _get_mo_explanation(doc, r, structure):
     return "疑问词"
   elif ele.pos_ in ["ADP"]:
     return _mo_adp_explanation(doc, ele, structure)
-  elif ele.head.lemma_ in ["heißen", "werden"]:
+  elif ele.head.lemma_ in ["heißen", "werden"] and ele.pos_ not in ["ADV"]:
     return "第一格补足语"
   elif ele.head.lemma_ in ["nennen", "kosten", "lehren", "schimpfen", "schelten"]:
     return "第四格补足语"
@@ -133,7 +142,7 @@ def _get_oc_explanation(doc, r, structure):
     return "第四格补足语"
   elif "pm" in deps and r["end"]-r["start"]==2:
     return "带zu不定式"
-  elif "sb" in deps or "da" in deps or "oa" in deps:
+  elif "sb" in deps or "da" in deps or "oa" in deps or "ep" in deps:
     return "第四格补足语"
   elif ele.head.lemma_ in ["heiß", "heißen", "werden"]: # mo pos
     return "第一格补足语"
@@ -156,6 +165,13 @@ def _get_cd_explanation(doc, t, structure):
   else:
     return "连词"
 
+def _get_jucp_explanation(doc, t, structure):
+  ele = doc[t["element"]]
+  if ele.pos_ in ["SCONJ", "CCONJ"]:
+    return "连词"
+  else:
+    return "其他"
+
 def _get_refer(doc, t, structure):
   parent_id = doc[t["element"]].head.i
   parents = [p for p in structure if p["element"]==parent_id]
@@ -174,13 +190,17 @@ def _analyze(doc, t, structure):
   elif dep == "re":
     t_refer = _get_refer(doc, t, structure)
     explanation = _analyze(doc, t_refer, structure)["explanation"]
+    if explanation in ["疑问词"]:
+      explanation = "其他"
   elif dep == "sb":
     explanation = _get_sb_explanation(doc, t, structure)
   elif dep == "cd":
     explanation = _get_cd_explanation(doc, t, structure)
+  elif dep in ["ju", "cp"]:
+    explanation = _get_jucp_explanation(doc, t, structure)
   elif dep in _de2c.keys():
     explanation = _de2c[dep]
-  elif dep in ["punct", "dm"]:
+  elif dep in ["punct"]:
     explanation = None
   else:
     explanation = dep
