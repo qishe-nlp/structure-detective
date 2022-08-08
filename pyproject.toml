@@ -6,7 +6,7 @@ authors = ["Phoenix.Grey <phoenix.grey0108@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-spacy = "^3.2.0"
+spacy = "^3.4.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
