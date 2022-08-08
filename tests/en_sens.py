@@ -1083,3 +1083,109 @@ half_be_going_to_sentences = [
   "When we arrived, the train was just going to start.",
 ]
 
+other_sens = [
+  "But there's one crucial ability we still need to harness...", # copula, there be
+  "There's a good reason for Angelo's inactivity.", # copula verb
+  "There's only one solution to this problem.", # copula verb
+
+  "For her, the journey is going to be more difficult.", # be going to
+  "She's going to have to build some muscles.", # copula verb, be going to  
+  "he's going to try and master this skill.", # be going to
+
+  "I didn't tie it loose, it's loosened itself.", # dobj
+
+]
+
+subtitle_sens = [
+  "I'll go get the cat.", # copula and xcomp
+  "Right, we're gonna get warmed up, so everyone run superfast on the spot.", # xcomp
+  "You're gonna go play today.", # copula and xcomp
+  "We're doing good.", # dependency tree error
+  "She goes to find her friend, Tismen.", # ????
+  "It might seem like his personality has changed...", # ????
+  "Jesse can now distinguish between faces he knows and those he doesn't.", # prep -> obj
+  "From the outside, it looks like Alu could be heading anywhere.", # adv
+  "But a remarkable instinct keeps him close to the person he trusts.", # copula
+  "But it's clear they really do want to help.", # ccomp
+  "Today, Bette is going on a playdate with two children from nursery.", # copula
+  "Um, you aren't allowed to go down there without a grownup.", # xcomp
+  "Back at home, it may seem as if Bette is lost in an imaginary world...", # copula
+  "It's not unusual for children to take their imaginations to a whole other level.", # advcl
+  "Goes to work.", # copula
+  "And show me what it looks like...", # ccomp
+  "Today they're on the move, heading to their spring camping ground.", # copula + prep
+  "Isn't it long enough?", # pass
+  "But she's realized it doesn't need to be so hard.", # ccomp
+  "Let's carry the bucket together.", # ccomp
+  "Shall we get the snow from over there?", # copula 
+  "The snow is beginning to melt here.", # xcomp
+  "Can you make it back?", # advmod
+  "Now I will cook for you.", # ??? pass
+  "Enerkhein is on an incredible journey that takes 2,000 days.", # copula + prep
+  "Our childhood is when we discover that we are stronger together.", # copula + advcl
+  "In the Yaeda Valley, a group of Hadza men are on the hunt.", # copula + prep
+  "We used to think babies could only form this special bond", # xcomp
+  "they discover there's an even more powerful way to connect with people.", # ccomp
+  "Where's Nana?", # copula + advmod
+  "babies quickly learn how to get and keep the attention of others.", # xcomp
+  "Jennifer the hairdresser expects her smiles to be returned.", # ccomp
+  "Oh, is this little Jesse?", # depedency tree error, pass
+  "Even if they only want to kiss his toes.", # xcomp
+  "It's around the age of two", # copula + prep
+  "Don't want Mommy go byebye?", # ccomp
+  "Mom, I want to go.", # xcomp
+  "He's been with Jojo for as long as she can remember.", # copula + prep
+  "Keeping them feeling safe and secure...", # ccomp
+  "Mara, you have to let Wolfie have a go.", # ccomp
+  "Want to hold Mummy's bag?", # xcomp
+  "Oh, you want to take the shopping?", # xcomp
+  "Let's just put it down, shall we?", # copula
+  "What have we got in here?", # pass
+  "Wolfie and Mara have chosen to help Mum put away the shopping.", # xcomp
+  "Are we gonna put that away?", # ???
+  "Yeah, that looks like a good spot.", # copula + prep
+  "Look what Wolfie's got.", # ccomp
+  "Come, let's go.", # ccomp
+  "Mum, look at the pelicans flying in the sky.", # copula
+  "Sabina, go gather the fruit, my daughter.", # advcl -> obj
+  "I think it's enough.", # ccomp
+  "Let's look at the monkeys.", # ccomp
+  "Let me read.", # ccomp
+  "Bette realizes the playdate could have gone better...", # ccomp
+  "Let's go and see the monkeys.", # ccomp
+  "Don't let them bite your finger.", # ccomp
+  "Let me read.", # ccomp
+  "She's using her toys to work out a way to deal with it differently next time.", # xcomp
+  "What do you want to eat today?", # xcomp
+  "I bet it can go 80 miles per hour.", # ccomp
+  "Parents often worry it's a sign of being shy or lonely.", # ccomp
+  "But research has shown that's not the case at all.", # ccomp
+  "Let's go to bed.", # let
+  "it encourages Kingsley to imagine how his friend might feel.", # xcomp
+  "Her rebellious nature often gets her into trouble.", # copula
+  "Alice, come, let's do coloring.", # ccomp
+  "She's at an age when she's starting to grasp how other people think.", # copula + prep
+  "We don't have a cat, Freya.", # pass
+  "Today she's at drama club with her friends...", # copula + prep
+  "Let's all have a sit down.", # let
+  "I just need to go and speak to someone,", # xcomp
+  "I'll be back in a minute.", # copula + prep
+  "Mm. I did it.", # punct problem
+  "For the first time, Freya is using a lie to get someone else off the hook.", # xcomp
+  "It means her friends won't miss out on their treats...", # ccomp
+  "Studies show that most people lie around twice every day.", # ccomp
+  "Look at Mommy.", # copula
+  "Look at me.", # copula
+  "The most daunting part will be joining a whole group of people", # xcomp
+  "Let's go.", # let
+  "How many friends do you think you'll make today?", # ccomp
+  "we learn how to win over those around us...", # xcomp
+  "Don't let them bite your finger.", # ccomp
+  "We practice getting along with others...", # xcomp
+  "Yeah, let's go.", # let
+  "Have you met Miranda, Kattaleya?", # pass
+  "Where are you supposed to be?", # xcomp
+  "Where are you?", # copula + advmod
+  "How was school?", # copula + advmod
+  "Let's go.", # let
+]

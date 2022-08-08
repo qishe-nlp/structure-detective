@@ -296,13 +296,10 @@ _sentences_5_10_b = [ # copula
 # _svp_sentences = _sentences_2_3 + _sentences_3_4_a
 
 
-# TODO
 
 # cross problem:
-_cross_sentences = _sentences_3_4_e
+#_cross_sentences = _sentences_3_4_e
 
-# xcomp rule: set to root
-_half_aux_sentences = _sentences_3_4_f + _sentences_3_7_a + _sentences_3_3
 
 # enumerate rule: set to root
 
@@ -320,21 +317,96 @@ _half_aux_sentences = _sentences_3_4_f + _sentences_3_7_a + _sentences_3_3
 #_verb_phrase_sentences = _sentences_3_4_b + _sentences_3_4_d
 
 
+# half_have_to:
+#   1 phrase is 'have to'
+#   2 followed token has dep aux and dep of its head is xcomp and its head's head is root
+
+
+# half_have_got_to
+#   1 text of root is got
+#   2 root has aux child with lemma have
+#   3 followed token has dep aux and dep of its head is xcomp and its head's head is root
+
+# half_be_going_to
+#   1 text of too is going
+#   2 root has aux child with lemma be
+#   3 followed token has dep aux and dep of its head is xcomp and its head's head is root
+
+#_half_aux_sentences = _sentences_3_4_f + _sentences_3_7_a + _sentences_3_3
+
+
 # TODO: others
 #_xcomp_rule
 
+_xcomp_sens = [
+  "It just goes to show there are no rules when it comes to crawling.", # xcomp
+  "Stop teasing me.", # xcomp
+  "This time, how we learn to move in ways no other animal can.", # xcomp
+  "The moment James starts to take control of his body.", # xcomp
+  "From now on, his mum, Nikita, will need to keep an eagle eye on him.", # xcomp
+  "a baby's next physical struggle is trying to sit up.", # xcomp
+  "But not everyone seems to realize it's a race.", # xcomp
+  "The pincer grip can take years to perfect.", # xcomp
+  "they need to stop relying on them to get around.", # xcomp
+  "Learning to walk.", # xcomp 
+  "After three weeks, he's taught himself to stand.", # xcomp
+  "His next breakthrough is learning to cruise,", # xcomp
+  "His biggest challenge will be learning to ride a reindeer.", # xcomp
+  "And first, he'll need to be able to get onto one.", # xcomp
+  "This time, dad breaks down how to get on step by step.", # xcomp
+  "Now keep pulling like this and we'll head home.", # xcomp
+  "As we approach 2,000 days, we're beginning to physically excel.", # xcomp
+  "But no matter how hard she tries, she keeps losing her balance.", # xcomp
+  "The temptation is to look down at her feet.", # xcomp
+  "What's difficult is getting them in the right order and at the right time.", # xcomp
+]
+
+_ccomp_sens = [
+  "Theo has discovered he's equipped with the perfect tools", # ccomp
+  "he'll find it easier to balance", # ccomp
+  "Let me tie it from here.", # let ccomp
+  "Let's start with a small reindeer.", # let ccomp
+  "If you pull on the reins you'll make it stop.", # ccomp
+  "Let's make a swimming pool", # ccomp
+  "it allows us to trust our body...", # ccomp
+]
+
+_copula_sens = [
+  "But for now, he's not going anywhere.", # copula verb, be going to
+  "Don't just stay there with your toys.", # copula verb
+  "Holding their breath for up to three minutes at a time.", # copula verb
+  "he's on the move for two and a half hours every day.", # copula + prep 
+  "Look at that balloon.", # copula
+  "It might not look like much,", # copula + prep
+  "Look at my robot.", # copula
+  "Rufus, should we go for a walk?", # copula
+  "A child's first steps hold a special place in every culture.", # copula
+  "You fell on all your toys.", # copula verb
+  "How are you feeling, Eva?", # copula
+  "For us, moving isn't just about surviving.", # copula + prep
+]
+
+_npadvmod = [
+  "You've learnt it, my boy.", # npadvmod
+]
+
+_gonna_sens = [
+  "James, it's gonna be a great day today.", # gonna 缩写
+  "It's gonna be fun.", # gonna
+]
+
+
 #_ccomp_rule
 
-
 def test_en_structure():
-  sentences = _cross_sentences
+  #sentences = half_had_better_sentences + half_had_best_sentences
   #sentences = _sentences_3_4_b
   #sentences = _sentences_3_4_d
   #sentences = _half_aux_sentences
   #sentences = half_have_to_sentences
   #sentences = half_have_got_to_sentences
-  #sentences = half_had_better_sentences
-
+  #sentences = half_be_going_to_sentences
+  sentences = subtitle_sens 
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('structure')

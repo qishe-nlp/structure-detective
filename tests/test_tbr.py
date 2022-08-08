@@ -83,12 +83,25 @@ _cross_sentences = [
 #_sentences = read_from_json(filename)
 
 
-_sentences = half_be_going_to_sentences 
+#_sentences = half_have_got_to_sentences 
 
-def test_structure_tbr():
+filename = "en_S01E03.json"
+_sentences = read_from_json(filename)
+
+#filename = "other"
+#_sentences = other_sens
+
+
+def test_write_to_sen():
+  with open('review_sens.txt', 'w') as f:
+    for s in _sentences[:130]:
+      f.write('"'+s+'",')
+      f.write('\n')
+
+def _test_structure_tbr():
   nlp = spacy.load(pkg)
   nlp.add_pipe('structure')
   content = sen_structure(_sentences, nlp) 
-  write_to_csv(["sentence", "analysis", "tbr"], content, csvfile="tbr/{}/{}.csv".format(lang, "examples"))
+  write_to_csv(["sentence", "analysis", "tbr"], content, csvfile="tbr/{}/{}.csv".format(lang, filename))
 
 
