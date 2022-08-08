@@ -54,6 +54,7 @@ def form_children_info(doc:Doc, children:list):
         "text": doc[start:end].text,
         "element": head.i, 
         "is_root": False,
+        "semantic_dep": head.dep_
       }
       store.append(_info)
   return store
