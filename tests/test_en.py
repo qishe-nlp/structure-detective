@@ -406,7 +406,8 @@ def test_en_structure():
   #sentences = half_have_to_sentences
   #sentences = half_have_got_to_sentences
   #sentences = half_be_going_to_sentences
-  sentences = subtitle_sens 
+  #sentences = subtitle_sens 
+  sentences = ["There are some problems with the system."]
 
   nlp = spacy.load(pkg)
   nlp.add_pipe('structure')
