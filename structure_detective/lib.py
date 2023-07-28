@@ -48,10 +48,13 @@ def form_children_info(doc:Doc, children:list):
       head = heads[0]
         
       start, end = min(t), max(t)+1
+      sub = doc[start:end]
       _info = {
         "start": start,
         "end": end,
-        "text": doc[start:end].text,
+        "start_char": sub.start_char,
+        "end_char": sub.end_char,
+        "text": sub.text,
         "element": head.i, 
         "is_root": False,
         "semantic_dep": head.dep_

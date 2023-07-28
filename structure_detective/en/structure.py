@@ -117,10 +117,13 @@ def _handle_vp_root(doc:Doc, roots: list):
   # append ROOT
   root = roots[0] 
   start, end = root.i, roots[-1].i+1
+  sub = doc[start:end]
   _info = {
     "start": start,
     "end": end,
-    "text": doc[start:end].text,
+    "start_char": sub.start_char,
+    "end_char": sub.end_char,
+    "text": sub.text,
     "element": root.i, 
     "is_root": True,
     "semantic_dep": "ROOT"
@@ -134,10 +137,13 @@ def _handle_half_have_to_root(doc:Doc, roots: list):
   for root in roots:
     start = root.i
     end = root.i+2 if root.dep_== "ROOT" and len(roots)==2 else root.i+1
+    sub = doc[start:end]
     _info = {
       "start": start,
       "end": end,
-      "text": doc[start:end].text,
+      "start_char": sub.start_char,
+      "end_char": sub.end_char,
+      "text": sub.text,
       "element": root.i, 
       "is_root": root.dep_=="ROOT",
       "semantic_dep": "ROOT"
@@ -151,10 +157,13 @@ def _handle_half_have_got_to_root(doc:Doc, roots: list):
   for root in roots:
     start = root.i
     end = root.i+1
+    sub = doc[start:end]
     _info = {
       "start": start,
       "end": end,
-      "text": doc[start:end].text,
+      "start_char": sub.start_char,
+      "end_char": sub.end_char,
+      "text": sub.text,
       "element": root.i, 
       "is_root": root.dep_=="ROOT",
       "semantic_dep": "ROOT"
@@ -168,9 +177,12 @@ def _handle_half_be_going_to_root(doc:Doc, roots: list):
   for root in roots:
     start = root.i
     end = root.i+1
+    sub = doc[start:end]
     _info = {
       "start": start,
       "end": end,
+      "start_char": sub.start_char,
+      "end_char": sub.end_char,
       "text": doc[start:end].text,
       "element": root.i, 
       "is_root": root.dep_=="ROOT",

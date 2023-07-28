@@ -29,10 +29,13 @@ def get_tree(doc: Doc, nlp: Language):
     copula_tree = get_subtree_except_xs(root, xs)
     copula_ranges = [e.i for e in copula_tree]
     start, end = min(copula_ranges), max(copula_ranges)+1
+    sub = doc[start:end]
     _info = {
       "start": start,
       "end": end,
-      "text": doc[start:end].text,
+      "start_char": sub.start_char,
+      "en_char": sub.end_char,
+      "text": sub.text,
       "element": root.i, 
       "is_root": True,
     }
@@ -42,10 +45,13 @@ def get_tree(doc: Doc, nlp: Language):
     store = form_children_info(doc, children)
 
     start, end = root.i, root.i+1
+    sub = doc[start:end]
     _info = {
       "start": start,
       "end": end,
-      "text": doc[start:end].text,
+      "start_char": sub.start_char,
+      "end_char": sub.end_char,
+      "text": sub.text,
       "element": root.i, 
       "is_root": True,
     }

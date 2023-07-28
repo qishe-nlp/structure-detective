@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "structure-detective"
-version = "0.1.5"
+version = "0.1.6"
 description = "Spacy component for parsing sentence"
 authors = ["Phoenix.Grey <phoenix.grey0108@gmail.com>"]
 

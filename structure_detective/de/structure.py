@@ -28,10 +28,13 @@ def _handle_backward_ocs(ocs:list, doc:Doc):
       store.extend(form_children_info(doc, regular_oc_children))
 
       start, end = oc.i, oc.i+1
+      sub = doc[start:end]
       _info = {
         "start": start,
         "end": end,
-        "text": doc[start:end].text,
+        "start_char": sub.start_char,
+        "end_char": sub.end_char,
+        "text": sub.text,
         "element": oc.i,
         "is_root": False,
       }
@@ -46,9 +49,12 @@ def _handle_oc(doc: Doc, nlp: Language):
   # append ROOT
   root = _get_root(doc)
   start, end = root.i, root.i+1
+  sub = doc[start:end]
   _info = {
     "start": start,
     "end": end,
+    "start_char": sub.start_char,
+    "end_char": sub.end_char,
     "text": doc[start:end].text,
     "element": root.i, 
     "is_root": True,
@@ -78,10 +84,13 @@ def _handle_oc(doc: Doc, nlp: Language):
       start, end = oc.i-1, oc.i+1 
     else:
       start, end = oc.i, oc.i+1
+    sub = doc[start:end]
     _info = {
       "start": start,
       "end": end,
-      "text": doc[start:end].text,
+      "start_char": sub.start_char,
+      "end_char": sub.end_char,
+      "text": sub.text,
       "element": oc.i,
       "is_root": False,
     }

@@ -58,6 +58,7 @@ _sentences = [
   #"Wir hatten etwas Wichtiges mit meinem Vater zu regeln.", #VERB-AUX
   #"Ich hoffe, Doktor, meine Zukunft nicht nur darauf beschränkt.", #oc
   #"Bei meiner Ehre, ich bin Korpsstudent.", # copula
+  "Er muss Hausaufgaben fertig machen.",
 ] 
 
 def test_de_structure():
