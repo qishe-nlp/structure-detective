@@ -1,15 +1,15 @@
 [tool.poetry]
 name = "structure-detective"
-version = "0.1.6"
+version = "0.1.7"
 description = "Spacy component for parsing sentence"
 authors = ["Phoenix.Grey <phoenix.grey0108@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-spacy = "^3.5.0"
+python = "^3.12"
+spacy = "3.7.5"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^8.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

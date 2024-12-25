@@ -34,7 +34,7 @@ def get_tree(doc: Doc, nlp: Language):
       "start": start,
       "end": end,
       "start_char": sub.start_char,
-      "en_char": sub.end_char,
+      "end_char": sub.end_char,
       "text": sub.text,
       "element": root.i, 
       "is_root": True,

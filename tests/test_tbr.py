@@ -4,7 +4,7 @@ from tests.lib import *
 import json
 from importlib import import_module
 from tests.en_sens import *
-lang = "en"
+lang = "es"
 pkg = PKG_INDICES[lang]
 
 def _add_bracket(ex):
@@ -14,6 +14,8 @@ def sen_structure(sentences, nlp):
   content = []
   for s in sentences:
     doc = nlp(s)
+    # Write lang_images
+    graph(doc, lang)
     structure_with_explanation = trs(doc, doc._.structure, lang)
     analysis = " ".join([t["text"] + _add_bracket(t["explanation"]) for t in structure_with_explanation])
     _data = {
@@ -24,7 +26,7 @@ def sen_structure(sentences, nlp):
     content.append(_data) 
   return content
 
-def _test_structure_tbr_gen():
+def test_structure_tbr_gen():
   nlp = spacy.load(pkg)
   nlp.add_pipe('structure')
   sens_dir = "{}_sens".format(lang)
@@ -85,14 +87,14 @@ _cross_sentences = [
 
 #_sentences = half_have_got_to_sentences 
 
-filename = "en_S01E03.json"
+filename = "es_test.json"
 _sentences = read_from_json(filename)
 
 #filename = "other"
 #_sentences = other_sens
 
 
-def test_write_to_sen():
+def _test_write_to_sen():
   with open('review_sens.txt', 'w') as f:
     for s in _sentences[:130]:
       f.write('"'+s+'",')

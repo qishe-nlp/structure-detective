@@ -39,7 +39,7 @@ def display_structure(sentences, nlp):
     print_structure(doc, nlp.meta["lang"])
     print_doc(doc)
     print("*"*10)
-    #graph(doc, nlp.meta["lang"])
+    graph(doc, nlp.meta["lang"])
 
 def write_to_csv(fields, content, csvfile="review.csv"):
   #print('Create {} file'.format(csvfile))
